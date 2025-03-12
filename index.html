@@ -2,21 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <meta name="viewport" content="width=device-width, initial-scale=4.0">
     <title>Verify Access</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        function validateCaptcha() {
-            var response = grecaptcha.getResponse();
-            if (response.length === 0) {
-                alert("Please complete the reCAPTCHA.");
-            } else {
-                alert("You are verified! Redirecting you to the survey...");
-                // Redirect to the hidden survey page
-                window.location.href = "https://sites.google.com/uw.edu/wctgrantcodesign/01acf02slei0838cfips";
-            }
+    <style>
+        #survey-button {
+            display: none;
+            margin-top: 20px;
         }
-    </script>
+    </style>
 </head>
 <body>
     <h3>Verify You Are Human</h3>
@@ -24,6 +18,20 @@
         <div class="g-recaptcha" data-sitekey="6LfXpfIqAAAAAODSrNDKlJBHL_z5waEs--Xientc"></div>
         <button type="button" onclick="validateCaptcha()">Verify</button>
     </form>
+
+    <a id="survey-button" href="https://sites.google.com/uw.edu/wctgrantcodesign/01acf02slei0838cfips" target="_blank">Click Here to Take the Survey</a>
+
+    <script>
+        function validateCaptcha() {
+            var response = grecaptcha.getResponse();
+            if (response.length === 0) {
+                alert("Please complete the reCAPTCHA.");
+            } else {
+                document.getElementById('survey-button').style.display = "inline-block";
+                alert("You are verified! Click the button to proceed.");
+            }
+        }
+    </script>
 </body>
 </html>
 
